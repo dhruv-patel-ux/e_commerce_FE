@@ -1,0 +1,61 @@
+<div class="analytics-container">
+    <h1>Analytics Dashboard</h1>
+  
+    <div class="metrics-grid">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Total Revenue</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="metric-value">{{ totalRevenue | currency }}</p>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Total Orders</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="metric-value">{{ totalOrders }}</p>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Average Order Value</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="metric-value">{{ averageOrderValue | currency }}</p>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Conversion Rate</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="metric-value">{{ conversionRate }}%</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <div class="charts-container">
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>Sales Over Time</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <canvas #salesChart></canvas>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>Sales by Category</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <canvas #categoryChart></canvas>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

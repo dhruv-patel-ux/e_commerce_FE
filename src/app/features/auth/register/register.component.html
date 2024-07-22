@@ -1,0 +1,100 @@
+<!-- signup.component.html -->
+<div class="signup-container">
+  <mat-card>
+    <mat-card-title>Sign Up</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Firstname</mat-label>
+          <input matInput formControlName="firstname" required />
+          @if(signupForm.get('firstname')?.hasError('required')){
+          <mat-error>firstname is required</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Lastname</mat-label>
+          <input matInput formControlName="lastname" required />
+          @if(signupForm.get('lastname')?.hasError('required')){
+          <mat-error>lastname is required</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required type="email" />
+          @if(signupForm.get('email')?.hasError('required')){
+          <mat-error>Email is required</mat-error>
+          } @if(signupForm.get('email')?.hasError('email')){
+          <mat-error>Please enter a valid email address</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput formControlName="phone" required type="number " />
+          @if(signupForm.get('phone')?.hasError('required')){
+          <mat-error>Phone is required</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            [type]="hidePassword ? 'password' : 'text'"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword"
+          >
+            <mat-icon>{{
+              hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+          @if(signupForm.get('password')?.hasError('required')){
+          <mat-error>Password is required</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input
+            matInput
+            formControlName="confirmPassword"
+            [type]="hideConfirmPassword ? 'password' : 'text'"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hideConfirmPassword = !hideConfirmPassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hideConfirmPassword"
+          >
+            <mat-icon>{{
+              hideConfirmPassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+          @if(signupForm.hasError('notSame')){
+          <mat-error>Passwords do not match</mat-error>
+          }
+        </mat-form-field>
+        <div class="btn-group">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!signupForm.valid"
+          >
+            Sign Up
+          </button>
+          <button mat-raised-button color="primary" routerLink="/login">
+            Login Up
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

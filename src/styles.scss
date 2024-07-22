@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@supports (scrollbar-color: auto) {
+    .scrollbox {
+      scrollbar-color: white !important;
+      width: 0px !important;
+    }
+  }
+  
+  /* Otherwise, use `::-webkit-scrollbar-*` pseudo-elements */
+  @supports selector(::-webkit-scrollbar) {
+    .scrollbox::-webkit-scrollbar {
+      background: white !important;
+      width: 0px !important;
+    }
+    .scrollbox::-webkit-scrollbar-thumb {
+        background: white !important;
+        width: 0px !important;
+    }
+  }

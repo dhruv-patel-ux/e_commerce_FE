@@ -1,0 +1,40 @@
+/* src/app/components/user-orders/user-orders.component.scss */
+.user-orders-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .loading,
+    .error,
+    .no-orders {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .orders-list {
+        .order-items-table {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .order-total {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    }
+}
+
+.order-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

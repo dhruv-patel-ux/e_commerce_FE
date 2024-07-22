@@ -1,0 +1,44 @@
+.customers-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 12px 8px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  th {
+    background-color: #fafafa;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  
+  tr:last-child td {
+    border-bottom: none;
+  }
+  
+//   .mat-column-id {
+//     width: 32px;
+//     border-right: 1px solid #e0e0e0;
+//     padding-right: 24px;
+//   }
+  
+  .mat-column-totalOrders,
+  .mat-column-totalSpent {
+    width: 120px;
+    text-align: right;
+  }

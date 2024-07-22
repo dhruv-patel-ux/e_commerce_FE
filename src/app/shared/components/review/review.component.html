@@ -1,0 +1,69 @@
+<!-- review.component.html -->
+<div class="review-container">
+  <h2>Customer Reviews</h2>
+
+  <!-- Review Form -->
+  <mat-card class="review-form">
+    <mat-card-header>
+      <mat-card-title>Write a Review</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="submitReview()">
+        <div class="star-rating">
+          <mat-label>Rating :</mat-label>
+          <div class="rate">
+            @for (star of stars; track $index) {
+            <mat-icon
+              [class.filled]="star <= rating"
+              (click)="rate(star)"
+              (mouseenter)="hoverRating = star"
+              (mouseleave)="hoverRating = 0"
+            >
+              {{ (hoverRating || rating) >= star ? "star" : "star_border" }}
+            </mat-icon>
+            }
+          </div>
+        </div>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Comment</mat-label>
+          <textarea
+            matInput
+            [(ngModel)]="newReview.comment"
+            name="comment"
+            required
+          ></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Submit Review
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Review List -->
+  <div class="review-list">
+    <h3>All Reviews</h3>
+    @for (review of reviews; track review.id) {
+    <mat-card class="review-item">
+      <mat-card-header>
+        <mat-card-title
+          >{{ review.username }} ORDERID #{{ review?.orderId }}</mat-card-title
+        >
+        <mat-card-subtitle>
+          @for (star of getStarArray(+review.rating); track $index) {
+          <mat-icon color="accent">star</mat-icon>
+          }
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ review.comment }}</p>
+      </mat-card-content>
+      <mat-card-footer>
+        <small>{{ review.date | date : "medium" }}</small>
+      </mat-card-footer>
+    </mat-card>
+    }
+  </div>
+</div>

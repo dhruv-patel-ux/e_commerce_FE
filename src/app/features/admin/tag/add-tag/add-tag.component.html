@@ -1,0 +1,23 @@
+<div>
+    <h4>  {{tagId? 'Edit Tag':'Add Tag'}}</h4>
+</div>
+<form [formGroup]="tagForm" (ngSubmit)="onSubmit()" class="tag-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Color</mat-label>
+    <input matInput type="color" formControlName="colour" required />
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!tagForm.valid"
+  >
+    {{tagId? 'Edit Tag':'Add Tag'}}
+  </button>
+</form>

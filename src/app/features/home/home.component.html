@@ -1,0 +1,58 @@
+<!-- home.component.html -->
+<div class="home-container">
+  <header>
+    <mat-toolbar color="primary">
+      <span>My E-commerce Store</span>
+      <span class="spacer"></span>
+      <button mat-button routerLink="/">Home</button>
+      @if(user){
+      <button mat-button routerLink="/cart">cart</button>
+      <button mat-button routerLink="/orders">My Orders</button>
+      <button mat-button (click)="logout()" tooltip="Logout">logout</button>
+      }@else{
+      <button mat-button routerLink="./login">
+        Login
+      </button>
+      }
+      <!-- <button mat-button routerLink="/cart">Cart</button>
+      <button mat-button>logout</button> -->
+    </mat-toolbar>
+  </header>
+
+  <main>
+    <section>
+      <router-outlet></router-outlet>
+    </section>
+    <!-- <section class="featured-products">
+      <h2>Featured Products</h2>
+      <div class="product-grid">
+        @for(product of featuredProducts;track product.id){
+        <mat-card>
+          <img
+            mat-card-image
+            [src]="getImage(product.image)"
+            [alt]="product.name"
+          />
+          <mat-card-content>
+            <h3>{{ product.name }}</h3>
+            <p>${{ product.price.toFixed(2) }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="accent">Add to Cart</button>
+          </mat-card-actions>
+        </mat-card>
+        }
+      </div>
+    </section> -->
+  </main>
+
+  <footer>
+    <mat-toolbar>
+      <span>&copy; 2024 My E-commerce Store. All rights reserved.</span>
+      <span class="spacer"></span>
+      <a mat-button>Privacy Policy</a>
+      <a mat-button>Terms of Service</a>
+      <a mat-button>Contact Us</a>
+    </mat-toolbar>
+  </footer>
+</div>

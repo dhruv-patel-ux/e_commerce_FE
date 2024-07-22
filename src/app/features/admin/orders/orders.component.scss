@@ -1,0 +1,43 @@
+.orders-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #fff;
+  box-shadow: none;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.status-chip {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.status-pending {
+  background-color: #fff0c2;
+  color: #a68b00;
+}
+
+.status-processing {
+  background-color: #c2e0ff;
+  color: #0058a6;
+}
+
+.status-shipped {
+  background-color: #d1f7c4;
+  color: #2b7d02;
+}
+
+.status-delivered {
+  background-color: #e6e6e6;
+  color: #555;
+}
