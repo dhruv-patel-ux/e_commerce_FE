@@ -14,6 +14,9 @@ import { environment } from '../../../environments/environment.development';
 import { ApiService } from '../../core/services/api.service';
 import { Router, RouterLink } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatChipsModule } from '@angular/material/chips';
+
+
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -28,7 +31,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatCardModule,
     MatButtonModule,
     CurrencyPipe,
-    RouterLink
+    RouterLink,
+    MatChipsModule
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
@@ -51,6 +55,9 @@ export class ProductsComponent {
   }
   getImage(src: any) {
     return environment.IMAGE_URL + src
+  }
+  getBackgrund(color: any) {
+    return `background-color: ${color} ; width:fit-content `
   }
   ngOnInit(): void {
     this.apiService.getProduct().subscribe((res: any) => {
@@ -91,7 +98,7 @@ export class ProductsComponent {
   openSnackBar(message: any) {
     this._snackBar.open(message, '', { duration: 3000 });
   }
-  
+
   logout() {
     localStorage.setItem('user', '');
     localStorage.setItem('access_token', '');

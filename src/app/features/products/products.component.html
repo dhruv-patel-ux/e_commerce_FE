@@ -4,7 +4,7 @@
     <p>Discover amazing products at great prices!</p>
     <button mat-raised-button color="accent">Shop Now</button>
   </section>
-  <mat-form-field appearance="fill">
+  <!-- <mat-form-field appearance="fill">
     <mat-label>Category</mat-label>
     <mat-select
       [(value)]="selectedCategory"
@@ -17,34 +17,40 @@
       </mat-option>
       }
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> -->
   <div class="product-card">
     @for(product of filteredProducts();track product.id){
     <mat-card class="product-card">
-      <img
-        mat-card-image
-        [src]="getImage(product.image)"
-        [alt]="product.name"
-        width="200px"
-        height="200px"
-      />
       <mat-card-content>
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.description }}</p>
-        <p class="price">{{ product.price | currency }}</p>
-        <p class="category">Category: {{ product.categoryName }}</p>
+        <div class="header">
+          <b>{{ product.name }}</b>
+          <b>{{ product.description }}</b>
+          <mat-chip [style]="getBackgrund(product.tagColour)">{{ product.tagName }}</mat-chip>
+        </div>
+        <div class="product-body">
+          <p class="price">{{ product.price | currency }}</p>
+          <!-- <p class="category">Category: {{ product.categoryName }}</p> -->
+          <img
+            mat-card-image
+            [src]="getImage(product.image)"
+            [alt]="product.name"
+            width="104px"
+            height="104px"
+          />
+        </div>
       </mat-card-content>
       <mat-card-footer>
         <mat-card-actions>
           <button
             mat-raised-button
             color="primary"
+            class="add-btn"
             (click)="addToCart(product)"
           >
             Add to Cart
           </button>
         </mat-card-actions>
-      </mat-card-footer>
+      </mat-card-footer> 
     </mat-card>
     }
   </div>
