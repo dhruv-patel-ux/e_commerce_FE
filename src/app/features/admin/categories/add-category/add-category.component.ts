@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -60,8 +60,7 @@ export class AddCategoryComponent {
     if (this.categoryId) {
       this.updateCategory()
     } else {
-      const formValue = this.categoryForm.getRawValue()
-      this.apiService.addCategory(formValue).subscribe((res: any) => {
+      this.apiService.addCategory(this.getFormValue()).subscribe((res: any) => {
         this.openSnackBar(res.message)
         this.categoryForm.reset();
         this.router.navigate(['./admin/category'])
@@ -70,6 +69,40 @@ export class AddCategoryComponent {
         this.openSnackBar(e)
       })
     }
+  }
+  selectedFile: any;
+  previewUrl: string | ArrayBuffer | null = null;
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+      this.createImagePreview(this.selectedFile);
+    } else {
+      this.selectedFile = null;
+      this.previewUrl = null;
+    }
+  }
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+  triggerFileInput(): void {
+    this.fileInput.nativeElement.click();
+  }
+
+  createImagePreview(file: File): void {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.previewUrl = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+  getFormValue() {
+    const formValue = this.categoryForm.getRawValue();
+    formValue['image'] = this.selectedFile;
+    const formData = new FormData();
+    for (let data of Object.keys(formValue)) {
+      formData.append(data, formValue[data]);
+    }
+    return formData
   }
   openSnackBar(message: any) {
     this._snackBar.open(message, '', { duration: 3000 });
