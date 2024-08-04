@@ -20,6 +20,12 @@
     }
 
     .orders-list {
+        & mat-expansion-panel{
+            padding: 14px;
+        }
+        .mat-expansion-panel-header-description{
+            flex-grow: 1;
+        }
         .order-items-table {
             width: 100%;
             margin-bottom: 15px;

@@ -2,21 +2,40 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-@supports (scrollbar-color: auto) {
-    .scrollbox {
-      scrollbar-color: white !important;
-      width: 0px !important;
-    }
+// @supports (scrollbar-color: auto) {
+//     .scrollbox {
+//       scrollbar-color: white !important;
+//       width: 0px !important;
+//     }
+//   }
+  
+//   /* Otherwise, use `::-webkit-scrollbar-*` pseudo-elements */
+//   @supports selector(::-webkit-scrollbar) {
+//     .scrollbox::-webkit-scrollbar {
+//       background: white !important;
+//       width: 0px !important;
+//     }
+//     .scrollbox::-webkit-scrollbar-thumb {
+//         background: white !important;
+//         width: 0px !important;
+//     }
+//   }
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0;
   }
   
-  /* Otherwise, use `::-webkit-scrollbar-*` pseudo-elements */
-  @supports selector(::-webkit-scrollbar) {
-    .scrollbox::-webkit-scrollbar {
-      background: white !important;
-      width: 0px !important;
-    }
-    .scrollbox::-webkit-scrollbar-thumb {
-        background: white !important;
-        width: 0px !important;
-    }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #fff; 
   }

@@ -4,6 +4,15 @@ header {
   top: 0;
   width: 100%;
   z-index: 1111;
+
+  mat-toolbar {
+    background-color: #f14668;
+    color: #fff;
+
+    & button {
+      color: inherit;
+    }
+  }
 }
 
 main {
@@ -14,7 +23,8 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-background-color: #F1F2F4;
+  background-color: #F1F2F4;
+
   .spacer {
     flex: 1 1 auto;
   }
@@ -22,6 +32,11 @@ background-color: #F1F2F4;
   main {
     flex: 1;
     padding: 20px 0;
+
+    section {
+      height: calc(100vh - 112px);
+      overflow: auto;
+    }
 
     .hero {
       text-align: center;
@@ -93,6 +108,16 @@ footer {
   bottom: 0;
   z-index: 1111;
   width: 100%;
+
+  mat-toolbar {
+    font-size: small;
+    background-color: #f14668;
+    color: #fff;
+
+    & a {
+      color: inherit;
+    }
+  }
 }
 
 @media (max-width: 600px) {

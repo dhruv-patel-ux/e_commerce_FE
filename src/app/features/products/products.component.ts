@@ -45,7 +45,7 @@ export class ProductsComponent {
 
   categories: any[] = [];
 
-  selectedCategory: string = 'all';
+  selectedCategory: string = '';
   cartItems: any[] = [];
   user: any;
   CartToggle: boolean = false;
@@ -69,14 +69,16 @@ export class ProductsComponent {
 
   }
 
-  onCategoryChange(category: string): void {
-    this.selectedCategory = category;
+  onCategoryChange(category: any): void {
+    this.selectedCategory = category.name;
+    console.log(category);
+    
   }
 
   filteredProducts(): any[] {
-    return this.selectedCategory === 'all'
+    return this.selectedCategory === ''
       ? this.products
-      : this.products.filter(p => p.category === this.selectedCategory);
+      : this.products.filter(p => p.categoryName === this.selectedCategory);
   }
 
   addToCart(product: any): void {

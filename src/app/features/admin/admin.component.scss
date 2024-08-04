@@ -2,9 +2,18 @@
 .admin-container {
     height: 100vh;
 }
-
 .sidenav {
+    border-radius: 0;
+    background-color: #f14668;
     width: 250px;
+    & mat-nav-list{
+        & span{
+            color: #fff;
+        }
+        & mat-icon{
+            color: #fff;
+        }        
+    }
 }
 
 .content-container {

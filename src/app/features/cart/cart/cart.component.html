@@ -9,38 +9,41 @@
   </mat-card>
   }
   <div class="card-container">
-    @for( item of cartItems;track item.id){
-    <mat-card class="cart-item">
-      <img
-        [src]="getImage(item.image)"
-        width="100"
-        height="100"
-        [alt]="item.name"
-        class="item-image"
-      />
-      <div class="item-details">
-        <h2>{{ item.name }}</h2>
-        <p class="price">${{ item.price.toFixed(2) }}</p>
-      </div>
-      <div class="quantity-control">
-        <button mat-icon-button (click)="updateQuantity(item, -1)">
-          <mat-icon>remove</mat-icon>
+    <div class="item-list">
+      @for( item of cartItems;track item.id){
+      <mat-card class="cart-item">
+        <img
+          [src]="getImage(item.image)"
+          width="100"
+          height="100"
+          [alt]="item.name"
+          class="item-image"
+        />
+        <div class="item-details">
+          <h2>{{ item.name }}</h2>
+          <p class="price">${{ item.price.toFixed(2) }}</p>
+        </div>
+        <div class="quantity-control">
+          <button mat-icon-button (click)="updateQuantity(item, -1)">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span class="quantity">{{ item.quantity }}</span>
+          <button mat-icon-button (click)="updateQuantity(item, 1)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="removeItem(item)"
+          class="remove-button"
+        >
+          <mat-icon>delete</mat-icon>
         </button>
-        <span class="quantity">{{ item.quantity }}</span>
-        <button mat-icon-button (click)="updateQuantity(item, 1)">
-          <mat-icon>add</mat-icon>
-        </button>
-      </div>
-      <button
-        mat-icon-button
-        color="warn"
-        (click)="removeItem(item)"
-        class="remove-button"
-      >
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-card>
-    } @if(cartItems.length > 0){
+      </mat-card>
+      }
+    </div>
+    @if(cartItems.length > 0){
     <mat-card class="cart-summary">
       <mat-card-content>
         <div class="address-header">

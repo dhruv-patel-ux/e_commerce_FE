@@ -7,18 +7,18 @@
   <section class="category">
     <mat-card class="category-card">
       @for(category of categories;track category.id){
-      <mat-card-content>
+      <mat-card-content (click)="onCategoryChange(category)"> 
         <div class="category-img">
           <img
             mat-card-image
             [src]="getImage(category.image)"
             [alt]="category.name"
-            width="104px"
-            height="104px"
+            width="64px"
+            height="64px"
           />
         </div>
         <div>
-          <b>{{ category.name }}</b>
+          <p>{{ category.name }}</p>
         </div>
       </mat-card-content>
       }

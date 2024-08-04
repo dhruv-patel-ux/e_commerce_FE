@@ -3,7 +3,13 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-  
+  .item-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
+  }
     h1 {
       text-align: center;
       margin-bottom: 20px;
@@ -87,6 +93,6 @@
   .card-container{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
   }
