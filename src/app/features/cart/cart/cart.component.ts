@@ -9,6 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { loadStripe } from '@stripe/stripe-js';
 import { FormsModule } from '@angular/forms';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +20,10 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule],
+    FormsModule,
+    MatDividerModule,
+    MatToolbarModule
+  ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

@@ -107,11 +107,14 @@ mat-toolbar {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch;
-  gap: 24px;
+  gap: 20px;
 
   & mat-card {
     transition: transform .2s;
+    flex: 1 1 calc(33% - 20px); /* Ensures the items take equal space and wrap */
+    max-width: 220px; /* You can adjust this */
+    min-width: 200px; /* Ensures a minimum width before wrapping */
+    box-sizing: border-box;
   }
 
   & mat-card-content {

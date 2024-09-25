@@ -6,7 +6,7 @@ header {
   z-index: 1111;
 
   mat-toolbar {
-    background-color: #f14668;
+    background-color: #2874f0;
     color: #fff;
 
     & button {
@@ -32,11 +32,6 @@ main {
   main {
     flex: 1;
     padding: 20px 0;
-
-    section {
-      height: calc(100vh - 112px);
-      overflow: auto;
-    }
 
     .hero {
       text-align: center;
@@ -104,14 +99,11 @@ main {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  z-index: 1111;
   width: 100%;
 
   mat-toolbar {
     font-size: small;
-    background-color: #f14668;
+    background-color: #2874f0;
     color: #fff;
 
     & a {

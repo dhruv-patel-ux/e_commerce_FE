@@ -1,6 +1,5 @@
 <!-- cart.component.html -->
 <div class="cart-container">
-  <h1>Your Cart</h1>
   @if(cartItems.length === 0){
   <mat-card class="empty-cart">
     <mat-card-content>
@@ -10,57 +9,99 @@
   }
   <div class="card-container">
     <div class="item-list">
-      @for( item of cartItems;track item.id){
-      <mat-card class="cart-item">
-        <img
-          [src]="getImage(item.image)"
-          width="100"
-          height="100"
-          [alt]="item.name"
-          class="item-image"
-        />
-        <div class="item-details">
-          <h2>{{ item.name }}</h2>
-          <p class="price">${{ item.price.toFixed(2) }}</p>
+      <mat-card class="address-card">
+        <div>From Saved Addresses</div>
+        <div>
+          <button mat-button>Enter Delivery Pincode</button>
         </div>
-        <div class="quantity-control">
-          <button mat-icon-button (click)="updateQuantity(item, -1)">
-            <mat-icon>remove</mat-icon>
-          </button>
-          <span class="quantity">{{ item.quantity }}</span>
-          <button mat-icon-button (click)="updateQuantity(item, 1)">
-            <mat-icon>add</mat-icon>
-          </button>
-        </div>
-        <button
-          mat-icon-button
-          color="warn"
-          (click)="removeItem(item)"
-          class="remove-button"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
       </mat-card>
-      }
+      <mat-card>
+        @for( item of cartItems;track item.id){
+        <div class="cart-item">
+          <img
+            [src]="getImage(item.image)"
+            width="100"
+            height="100"
+            [alt]="item.name"
+            class="item-image"
+          />
+          <div class="item-details">
+            <h2>{{ item.name }}</h2>
+            <p class="price">${{ item.price.toFixed(2) }}</p>
+          </div>
+        </div>
+        <div class="item-footer">
+          <div class="quantity-control">
+            <button mat-icon-button (click)="updateQuantity(item, -1)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span class="quantity">{{ item.quantity }}</span>
+            <button mat-icon-button (click)="updateQuantity(item, 1)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div>
+            <button mat-button color="secondary">Save For Later</button>
+            <button
+              mat-button
+              color="warn"
+              (click)="removeItem(item)"
+              class="remove-button"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        }
+        <mat-toolbar class="place-order">
+          <button mat-raised-button color="primary" (click)="checkout()">
+            Place Order
+          </button>
+        </mat-toolbar>
+      </mat-card>
     </div>
     @if(cartItems.length > 0){
     <mat-card class="cart-summary">
       <mat-card-content>
-        <div class="address-header">
-          <h6>Shipping Address:</h6>
-          <mat-form-field>
+        <div class="price-header">
+          <h6 class="price-title">PRICE DETAILS</h6>
+          <mat-divider></mat-divider>
+          <table class="price-table">
+            <tr>
+              <td><p>Price(Item)</p></td>
+              <td><p>$4600</p></td>
+            </tr>
+            <tr>
+              <td><p>Discount</p></td>
+              <td><p class="gree-text">-90</p></td>
+            </tr>
+            <tr>
+              <td><p>Delivery Charges</p></td>
+              <td>
+                <p>-70 <span class="gree-text">Free</span></p>
+              </td>
+            </tr>
+          </table>
+          <mat-divider></mat-divider>
+          <table class="price-table">
+            <tr>
+              <td><p>Total Amount</p></td>
+              <td>
+                <p>${{ getSubtotal().toFixed(2) }}</p>
+              </td>
+            </tr>
+          </table>
+          <mat-divider></mat-divider>
+          <div>
+            <p class="gree-text">You will save ₹9,010 on this order</p>
+          </div>
+          <!-- <mat-form-field>
             <mat-label>Shipping Address:</mat-label>
             <textarea matInput [(ngModel)]="address"></textarea>
-          </mat-form-field>
+          </mat-form-field> -->
         </div>
-
-        <h6>Subtotal: ${{ getSubtotal().toFixed(2) }}</h6>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="checkout()">
-          Proceed to Checkout
-        </button>
-      </mat-card-actions>
     </mat-card>
     }
   </div>
