@@ -18,7 +18,7 @@
         </div>
         <div class="form-container">
           <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-            <div class="d-flex gap-2">
+            <div class="input-groups">
               <mat-form-field appearance="outline">
                 <mat-label>Firstname</mat-label>
                 <input matInput formControlName="firstname" required />
@@ -34,7 +34,7 @@
                 }
               </mat-form-field>
             </div>
-            <div class="d-flex gap-2">
+            <div class="input-groups">
               <mat-form-field appearance="outline">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email" required type="email" />
@@ -52,7 +52,7 @@
                 }
               </mat-form-field>
             </div>
-            <div class="d-flex gap-2">
+            <div class="input-groups">
               <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
                 <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'" required />

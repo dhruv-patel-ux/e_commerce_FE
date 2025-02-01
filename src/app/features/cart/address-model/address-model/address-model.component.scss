@@ -1,0 +1,42 @@
+.title {
+    padding: 12px;
+}
+
+mat-card-content {
+    padding: 18px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.gap-1 {
+    gap: 8px;
+}
+
+.gap-2 {
+    gap: 12px;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+.flex-row {
+    flex-direction: row;
+}
+.justify-center {
+    justify-content: center;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.input-groups {
+    display: flex;
+    gap: 12px;
+}

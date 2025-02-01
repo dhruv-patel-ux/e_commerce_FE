@@ -15,7 +15,9 @@ mat-form-field {
   width: 100%;
   margin-bottom: 20px;
 }
-
+mat-card-content{
+  padding: 0 !important;
+}
 button[type="submit"] {
   width: 100%;
 }

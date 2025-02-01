@@ -1,1 +1,80 @@
-<p>address-model works!</p>
+<!-- signup.component.html -->
+<mat-card>
+  <mat-card-content>
+    <section>
+      <h6 class="title">Select Address</h6>
+      <mat-radio-group aria-label="Select an option">
+        <div class="d-flex gap-1">
+          <mat-radio-button value="1"></mat-radio-button>
+          <div>
+            <b>Dhruv, Patel 385520</b>
+            <p>Nidhi 3/24 ahmedabad</p>
+          </div>
+        </div>
+      </mat-radio-group>
+    </section>
+    <h6 class="title">Add Address</h6>
+    <section class="d-flex gap-2">
+      <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+        <div class="input-groups">
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" required />
+            @if(addressForm.get('address')?.hasError('required')){
+            <mat-error>Address is required</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>House No.</mat-label>
+            <input matInput formControlName="house_no" required />
+            @if(addressForm.get('house_no')?.hasError('required')){
+            <mat-error>House No is required</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="input-groups">
+          <mat-form-field appearance="outline">
+            <mat-label>Street</mat-label>
+            <input matInput formControlName="street" required />
+            @if(addressForm.get('street')?.hasError('required')){
+            <mat-error>Street is required</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" required />
+            @if(addressForm.get('city')?.hasError('required')){
+            <mat-error>City is required</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="input-groups">
+          <mat-form-field appearance="outline">
+            <mat-label>State</mat-label>
+            <input matInput formControlName="state" required type="text" />
+            @if(addressForm.get('state')?.hasError('required')){
+            <mat-error>Please enter a state</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Zip</mat-label>
+            <input matInput formControlName="zip" required type="number " />
+            @if(addressForm.get('zip')?.hasError('required')){
+            <mat-error>Zip is required</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="d-flex justify-center">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!addressForm.valid"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+    </section>
+  </mat-card-content>
+</mat-card>

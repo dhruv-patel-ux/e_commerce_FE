@@ -10,6 +10,42 @@
     width: 100%;
     max-width: 80%;
 
+    mat-card-content {
+      padding: 0 !important;
+    }
+
+    .input-groups {
+      display: flex;
+      gap: 12px;
+    }
+
+    @media only screen and (max-width:960px) {
+      .input-groups {
+        display: block;
+      }
+
+      mat-form-field {
+        margin-bottom: 0px !important;
+      }
+
+      .btn-group {
+        gap: 0px;
+      }
+
+      .form-container {
+        padding: 24px 12px !important;
+      }
+    }
+
+    @media only screen and (max-width:600px) {
+      .info-container{
+        max-width: 0px !important;
+        display: none !important;
+      }
+      .form-container {
+        padding: 32px 24px !important;
+      }
+    }
 
     .d-flex {
       display: flex;

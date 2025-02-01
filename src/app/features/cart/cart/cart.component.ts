@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,8 +9,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { loadStripe } from '@stripe/stripe-js';
 import { FormsModule } from '@angular/forms';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { AddressModelComponent } from '../address-model/address-model/address-model.component';
+
 
 @Component({
   selector: 'app-cart',
@@ -22,15 +25,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatInputModule,
     FormsModule,
     MatDividerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
 export class CartComponent {
   cartItems: any[] = [];
-
-  constructor(private apiService: ApiService, private _snackBar: MatSnackBar,) { }
+  readonly dialog = inject(MatDialog);
+  constructor(private apiService: ApiService, private _snackBar: MatSnackBar) { }
   ngOnInit() {
     // In a real application, you would fetch this data from a service
     this.getCart()
@@ -85,7 +89,7 @@ export class CartComponent {
   );
   async checkout() {
     // Implement checkout logic here
-    if(!this.address){
+    if (!this.address) {
       this.openSnackBar("Please Enter Address");
       return
     }
@@ -101,5 +105,7 @@ export class CartComponent {
     }, (e: any) => { })
     console.log('Proceeding to checkout');
   }
-
+  addAddress() {
+    this.dialog.open(AddressModelComponent);
+  }
 }
